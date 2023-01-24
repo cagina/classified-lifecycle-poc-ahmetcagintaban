@@ -4,12 +4,10 @@ public class IlanRequestModel {
 	private String title;
 	private String description;
 	private String category;
-	private String status;
 	public IlanRequestModel(String title, String description, String category, String status) {
 		this.title = title;
 		this.description = description;
 		this.category = category;
-		this.status = status;
 	}
 	public String getTitle() {
 		return title;
@@ -33,13 +31,5 @@ public class IlanRequestModel {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 }

@@ -1,5 +1,8 @@
 package sahininden.com.classified.lifecycle.poc.entity;
 
+import sahininden.com.classified.lifecycle.poc.enums.IlanCategory;
+import sahininden.com.classified.lifecycle.poc.enums.IlanStatus;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -21,13 +24,13 @@ public class Ilan {
 	private String description;
 
 	@Column(name = "category")
-	private String category;
+	private IlanCategory category;
 
 	@Column(name = "status")
-	private String status;
+	private IlanStatus status;
 
 
-	public Ilan( String title, String description, String category, String status) {
+	public Ilan( String title, String description, IlanCategory category, IlanStatus status) {
 		this.title = title;
 		this.description = description;
 		this.category = category;
@@ -60,19 +63,19 @@ public class Ilan {
 		this.description = description;
 	}
 
-	public String getCategory() {
+	public IlanCategory getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(IlanCategory category) {
 		this.category = category;
 	}
 
-	public String getStatus() {
+	public IlanStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(IlanStatus status) {
 		this.status = status;
 	}
 }
