@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "Ilan")
@@ -29,15 +31,23 @@ public class Ilan {
 	@Column(name = "status")
 	private IlanStatus status;
 
+	@Column(name = "created_Date")
+	private Timestamp createdDate = Timestamp.from(Instant.now());
 
-	public Ilan( String title, String description, IlanCategory category, IlanStatus status) {
-		this.title = title;
-		this.description = description;
-		this.category = category;
-		this.status = status;
+	@Column(name = "expiry_Date")
+	private Timestamp expiryDate;
+
+	@Column(name = "repeated")
+	private Boolean repeated;
+	public Ilan() {};
+
+	public Boolean getRepeated() {
+		return repeated;
 	}
 
-	public Ilan() {};
+	public void setRepeated(Boolean repeated) {
+		this.repeated = repeated;
+	}
 
 	public long getId() {
 		return id;
@@ -77,5 +87,30 @@ public class Ilan {
 
 	public void setStatus(IlanStatus status) {
 		this.status = status;
+	}
+
+	public Timestamp getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Timestamp createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Timestamp getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Timestamp expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	public Ilan(String title, String description, IlanCategory category, IlanStatus status, Timestamp expiryDate, Boolean repeated) {
+		this.title = title;
+		this.description = description;
+		this.category = category;
+		this.status = status;
+		this.expiryDate = expiryDate;
+		this.repeated = repeated;
 	}
 }

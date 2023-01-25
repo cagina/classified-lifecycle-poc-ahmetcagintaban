@@ -1,17 +1,25 @@
 package sahininden.com.classified.lifecycle.poc.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.time.Instant;
+@ApiModel(value ="Post DTO", description ="Post Data Transfer Object")
 public class IlanResponseModel {
+	@ApiModelProperty(value="Post dto Id alanı.", required = true)
 	private String title;
 	private String description;
 	private String category;
 	private String status;
 	private Long Id;
-	public IlanResponseModel(String title, String description, String category, String status, Long id) {
-		this.title = title;
-		this.description = description;
-		this.category = category;
-		this.status = status;
-		Id = id;
+	private Instant expiryDate;
+	public Instant getExpiryDate() {
+		return expiryDate;
+	}
+	private Boolean repeated;
+
+	public void setExpiryDate(Instant expiryDate) {
+		this.expiryDate = expiryDate;
 	}
 
 	public String getTitle() {
@@ -52,5 +60,23 @@ public class IlanResponseModel {
 
 	public void setId(Long id) {
 		Id = id;
+	}
+
+	public Boolean getRepeated() {
+		return repeated;
+	}
+
+	public void setRepeated(Boolean repeated) {
+		this.repeated = repeated;
+	}
+
+	public IlanResponseModel(String title, String description, String category, String status, Long id, Instant expiryDate, Boolean repeated) {
+		this.title = title;
+		this.description = description;
+		this.category = category;
+		this.status = status;
+		Id = id;
+		this.expiryDate = expiryDate;
+		this.repeated = repeated;
 	}
 }
