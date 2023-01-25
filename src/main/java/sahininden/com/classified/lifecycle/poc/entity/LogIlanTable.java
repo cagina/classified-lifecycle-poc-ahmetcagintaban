@@ -1,8 +1,10 @@
 package sahininden.com.classified.lifecycle.poc.entity;
-
-import sahininden.com.classified.lifecycle.poc.enums.IlanCategory;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
 import java.sql.Timestamp;
 import java.time.Instant;
 

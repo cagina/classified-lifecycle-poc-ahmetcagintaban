@@ -1,7 +1,8 @@
 package sahininden.com.classified.lifecycle.poc.model;
 
+import io.swagger.annotations.ApiModel;
 import java.time.Instant;
-
+@ApiModel(value ="Ilan History Model", description ="İlan içinde değişimlerin ön yüze dondugu model.")
 public class LogIlanReponseModel {
 	private String oldValue;
 	private String newValue;

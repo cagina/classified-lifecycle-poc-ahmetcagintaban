@@ -3,13 +3,16 @@ package sahininden.com.classified.lifecycle.poc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sahininden.com.classified.lifecycle.poc.entity.Ilan;
 import sahininden.com.classified.lifecycle.poc.entity.LogIlanTable;
+import sahininden.com.classified.lifecycle.poc.entity.LongestRequestLog;
 import sahininden.com.classified.lifecycle.poc.enums.IlanCategory;
 import sahininden.com.classified.lifecycle.poc.enums.IlanStatus;
 import sahininden.com.classified.lifecycle.poc.model.*;
 import sahininden.com.classified.lifecycle.poc.repository.IlanRepository;
 import sahininden.com.classified.lifecycle.poc.repository.LogIlanTableRepository;
+import sahininden.com.classified.lifecycle.poc.repository.LongestRequestLogRepository;
 import sahininden.com.classified.lifecycle.poc.utils.StringOperator;
 
 import java.sql.Timestamp;
@@ -26,6 +29,8 @@ public class IlanService {
 	LogIlanTableRepository logIlanTableRepository;
 	@Autowired
 	StringOperator stringOperator;
+	@Autowired
+	LongestRequestLogRepository logRepository;
 	@Value("${title.length.lower.limit}")
 	private int lower;
 	@Value("${title.length.upper.limit}")
@@ -104,4 +109,15 @@ public class IlanService {
 		return res;
 	}
 
+	public List<LongestResponseLogModel> getLogRequestResponse() {
+		List<LongestResponseLogModel> res = new ArrayList<>();
+		logRepository.findAll().forEach((ilan) -> {
+			res.add(new LongestResponseLogModel(ilan.getRequest(), ilan.getResponse(), ilan.getExecuteTime(), ilan.getMethod()));
+		});
+		return res;
+	}
+	@Transactional
+	public void longRequestLogSaver(LongestRequestLog model) {
+		logRepository.save(model);
+	}
 }

@@ -1,12 +1,10 @@
 package sahininden.com.classified.lifecycle.poc.model;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.time.Instant;
-@ApiModel(value ="Post DTO", description ="Post Data Transfer Object")
+@ApiModel(value ="Ilan Response Model", description ="Ön yüze dönen ilan bilgilerinin modeli.")
 public class IlanResponseModel {
-	@ApiModelProperty(value="Post dto Id alanı.", required = true)
 	private String title;
 	private String description;
 	private String category;

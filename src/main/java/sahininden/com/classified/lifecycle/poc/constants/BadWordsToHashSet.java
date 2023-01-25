@@ -2,7 +2,10 @@ package sahininden.com.classified.lifecycle.poc.constants;
 
 import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 @Configuration
 public class BadWordsToHashSet {
